@@ -1,0 +1,45 @@
+{
+  "name": "JSS.Samples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "JSS.Samples Node Dependencies",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "async": "^2.1.5",
+    "foundation-sites": "^6.5.0-rc.1",
+    "glob": "^7.0.3",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-exec": "^2.1.2",
+    "gulp-flatten": "^0.3.1",
+    "gulp-foreach": "^0.1.0",
+    "gulp-ignore": "^2.0.2",
+    "gulp-install": "^0.6.0",
+    "gulp-load-plugins": "^1.0.0",
+    "gulp-msbuild": "^0.4.7",
+    "gulp-newer": "^1.0.0",
+    "gulp-nuget-restore": "^0.5.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-stream": "0.0.2",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "merge-stream": "^1.0.0",
+    "request": "^2.81.0",
+    "rimraf": "^2.6.0",
+    "run-sequence": "^1.1.4",
+    "vinyl": "^2.0.1",
+    "xml2js": "^0.4.16",
+    "xmlpoke": "^0.1.12",
+    "yargs": "^6.6.0"
+  },
+  "devDependencies": {
+    "gulp-nuget-restore": "^0.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aceik",
+  "license": "ISC"
+}
