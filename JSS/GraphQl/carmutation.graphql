@@ -1,0 +1,6 @@
+mutation($details:CarDetailsInput!) {
+  cardetailsmutation(details:$details) {
+    result
+    version
+  }
+}

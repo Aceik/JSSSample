@@ -2,7 +2,7 @@
 
 namespace Foundation.API.Models
 {
-    public class BusDetailsInput : InputObjectGraphType<MyCarDetails>
+    public class BusDetailsInput : InputObjectGraphType<MyBusDetails>
     {
         public BusDetailsInput()
         {

@@ -1,0 +1,11 @@
+{
+  carinformation {
+    address {
+      aa
+    }
+    hasalarm
+    make
+    model
+    result
+  }
+}

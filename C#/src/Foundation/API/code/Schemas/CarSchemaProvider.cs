@@ -77,8 +77,8 @@ namespace Foundation.API.Schemas
         {
             private const string DetailsParameterName = "details";
             private const string DetailsParameterDescription = "details";
-            private const string CarDetailsMutationName = "cardetailsmationmutation";
-            private const string CarDetailsMutationDescription = "";
+            private const string CarDetailsMutationName = "cardetailsmutation";
+            private const string CarDetailsMutationDescription = "Car details mutation";
 
             public CarDetailsMutation() : base(name: CarDetailsMutationName, description: CarDetailsMutationDescription)
             {
@@ -123,7 +123,7 @@ namespace Foundation.API.Schemas
             public CarDetailsGraphType()
             {
                 Name = "CarInformation";
-                Field<NonNullGraphType<StringGraphType>>("address", resolve: context => context.Source.HousedAddress);
+                Field<NonNullGraphType<AddressType>>("address", resolve: context => context.Source.HousedAddress);
                 Field<NonNullGraphType<StringGraphType>>("model", resolve: context => context.Source.Model);
                 Field<NonNullGraphType<StringGraphType>>("make", resolve: context => context.Source.Make);
                 Field<NonNullGraphType<BooleanGraphType>>("hasalarm", resolve: context => context.Source.HasAlarm);
