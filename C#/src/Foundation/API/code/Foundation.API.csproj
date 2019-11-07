@@ -45,12 +45,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\BusDetailsInput.cs" />
     <Compile Include="Models\CarDetailsInput.cs" />
+    <Compile Include="Models\BusDetailsResponse.cs" />
+    <Compile Include="Models\MyBusDetails.cs" />
     <Compile Include="Models\MyCarDetails.cs" />
+    <Compile Include="Models\UpdateBusDetailsResponse.cs" />
     <Compile Include="Models\UpdateCarDetailsResponse.cs" />
     <Compile Include="Models\CarDetailsResponse.cs" />
     <Compile Include="Models\GraphQlResponse.cs" />
     <Compile Include="QueryArguments\GraphqlTooles.cs" />
+    <Compile Include="Schemas\BusSchemaProvider.cs" />
     <Compile Include="Schemas\CarSchemaProvider.cs" />
   </ItemGroup>
   <ItemGroup>

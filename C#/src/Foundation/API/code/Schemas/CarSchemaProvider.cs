@@ -11,52 +11,60 @@ using ResolveFieldContext = GraphQL.Types.ResolveFieldContext;
 namespace Foundation.API.Schemas
 {
     /// <summary>
-    /// Contact Info Schema provider. This allows the retrieval of contact information via a GraphQL Query.
+    /// Car Schema provider. This allows the retrieval of car details via a GraphQL Query.
     /// Example Mutation: 
     ///
     public class CarSchemaProvider : SchemaProviderBase
     {
         public override IEnumerable<FieldType> CreateRootQueries()
         {
-            yield return new ContactInfoQuery();
+            yield return new CarInfoQuery();
         }
 
-        protected class ContactInfoQuery : RootFieldType<CarDetailsGraphType, CarDetailsResponse>
+        protected class CarInfoQuery : RootFieldType<CarDetailsGraphType, CarDetailsResponse>
         {
-            private const string CarDetailsQueryName = "contactinformation";
+            private const string CarDetailsQueryName = "carinformation";
             private const string CarQueryDescription = "Retrieves a type of car";
 
-            public ContactInfoQuery() : base(name: CarDetailsQueryName, description: CarQueryDescription)
+            public CarInfoQuery() : base(name: CarDetailsQueryName, description: CarQueryDescription)
             {
                 Arguments = CommonQueryArguments.GetItemLookupArguments();
             }
 
             protected override CarDetailsResponse Resolve(ResolveFieldContext context)
             {
+                CarDetailsResponse response = null;
+
                 if (context.HasArgument(ApiConstants.GraphqlArgumentNames.PATH))
                 {
                     var value = context.Arguments[ApiConstants.GraphqlArgumentNames.PATH];
                     if (value != null && value == "Blue")
                     {
-                        return new CarDetailsResponse(true){ Address = new Address()
+                        response = new CarDetailsResponse(true){ HousedAddress = new Address()
                         {
-                            AddressLineOne = "Blue Address",
+                            AddressLineOne = "Blue HousedAddress",
                             Postcode = "4000",
                             State = "QLD",
                             Suburb = "Brisbane"
                         }};
                     }
                 }
-                return new CarDetailsResponse(true)
+                response = new CarDetailsResponse(true)
                 {
-                    Address = new Address()
+                    HousedAddress = new Address()
                     {
-                        AddressLineOne = "Unknown Address",
+                        AddressLineOne = "Unknown HousedAddress",
                         Postcode = "2000",
                         State = "NSW",
                         Suburb = "Sydney"
                     }
                 };
+
+                response.Make = "Toyota";
+                response.Model = "Tarago";
+                response.HasAlarm = true;
+
+                return response;
             }
         }
 
@@ -98,7 +106,7 @@ namespace Foundation.API.Schemas
         }
 
         /// <summary>
-        /// Creates the GraphQL fields for member information queries
+        /// Creates the GraphQL fields for car queries
         /// </summary>
         protected class UpdateCarDetailsGraphType : ObjectGraphType<UpdateCarDetailsResponse>
         {
@@ -110,15 +118,15 @@ namespace Foundation.API.Schemas
             }
         }
 
-        /// <summary>
-        /// Some mix up of objects happened with the one Graph Type
-        /// </summary>
         protected class CarDetailsGraphType : ObjectGraphType<CarDetailsResponse>
         {
             public CarDetailsGraphType()
             {
-                Name = "MyAccountContactInformation";
-                Field<NonNullGraphType<StringGraphType>>("address", resolve: context => context.Source.Address);
+                Name = "CarInformation";
+                Field<NonNullGraphType<StringGraphType>>("address", resolve: context => context.Source.HousedAddress);
+                Field<NonNullGraphType<StringGraphType>>("model", resolve: context => context.Source.Model);
+                Field<NonNullGraphType<StringGraphType>>("make", resolve: context => context.Source.Make);
+                Field<NonNullGraphType<BooleanGraphType>>("hasalarm", resolve: context => context.Source.HasAlarm);
                 Field<NonNullGraphType<BooleanGraphType>>("result", resolve: context => context.Source.Result);
             }
         }
